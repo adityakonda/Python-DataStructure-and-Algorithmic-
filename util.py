@@ -1,3 +1,5 @@
+from collections import deque
+
 class Util:
 
     def fib(self, number):
@@ -18,6 +20,22 @@ class Util:
                         break
                 else:
                     print(num)
+
+    def reverse_string(self, string):
+
+        reverse_string = ''
+        stack = deque()
+
+        for c in string:
+            stack.append(c)
+
+        i = 0
+
+        while not len(stack) == 0:
+            reverse_string += stack.pop()
+
+        return reverse_string
+
 
     def reverse_name(self, name):
 
@@ -51,4 +69,53 @@ class Util:
             else:
                 print(i, "= ODD number")
 
+
+    def sortArray(self, list):
+        existing_list = list
+        new_list = []
+
+        while existing_list:
+            min = existing_list[0]
+
+            for i in existing_list:
+                if i < min:
+                    min = i
+            
+            existing_list.remove(min)
+            new_list.append(min)
+
+        return new_list
+
+    def check_grid_is_suduko(self, grid):
+
+        list_number = []
+
+        # check if grid is a sequence
+        for x in range(0, 3):
+            for y in range(0, 3):
+                list_number.append(grid[x][y])
+
+        if sorted(list_number) != [*range(1, 10)]:
+            return False
+        list_number.clear()
+
+        # check row has duplicated
+        for x in range(0, 3):
+            for y in range(0, 3):
+                list_number.append(grid[x][y])
+
+            if len(list_number) != len(set(list_number)):
+                return False
+            list_number.clear()
+
+        # check if coln has duplicates
+        for y in range(0, 3):
+            for x in range(0, 3):
+                list_number.append(grid[x][y])
+
+            if len(list_number) != len(set(list_number)):
+                return False
+            list_number.clear()
+
+        return True
 
