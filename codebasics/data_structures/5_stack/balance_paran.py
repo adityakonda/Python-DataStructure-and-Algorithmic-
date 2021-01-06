@@ -27,7 +27,6 @@ def is_balanced(expression):
                 stack.append(ch)
 
             # insert only open braces then check_braces then pop elements
-
             if len(stack) > 0 and (ch == ']' or ch == ')' or ch == '}'):
                 return check_brace(stack.pop(), ch)
 
