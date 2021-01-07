@@ -27,14 +27,22 @@ class BinarySearchTreeNode:
     #todo - did not understand this part
     def in_order_traversal(self):
         element = []
-
+        print("Default -->",element, "-->", self.data)
         if self.left:
-            element += self.left.in_order_traversal()
+            va = self.left.in_order_traversal()
+            element += va
+            print("$$$$ LEFT --> ", va )
+            print("Left Element -->",element)
 
         element.append(self.data)
+        print("--> Visit Element -->", self.data)
 
         if self.right:
-            element += self.right.in_order_traversal()
+            va = self.right.in_order_traversal()
+            element += va
+
+            print("$$$$ RIGHT --> ", va)
+            print("Right Element -->", element)
 
         return element
 
