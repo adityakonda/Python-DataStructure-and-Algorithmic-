@@ -14,13 +14,6 @@ Suppose we have 8 nodes, to search the least node would be 8 -> 4 -> 2 -> 1.
 >   *   Search complexity = 0(log n)
 >   *   Insert complexity = 0(log n)
         
-
-
-
-
-
-
-
 This math is inline $`a^2+b^2=c^2`$.
 
 This is on a separate line
@@ -41,3 +34,10 @@ This is on a separate line
 
 Click [here](https://www.tutorialspoint.com/data_structures_algorithms/tree_traversal.htm "BTS Traversal Techniques")
  to learn More about Depth First Search techniques
+
+Deleting a node in a Binary Tree
+1.  Find the minimum from the right subtree and replace the delete node.
+    1.  Copy minimum from the right subtree 
+    2.  Delete a duplicate node 
+2.  Find the maximum from the left subtree and replace the delete node. 
+
