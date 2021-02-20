@@ -155,7 +155,31 @@ class BinarySearchTreeNode:
 
         return self
 
+    def delete_approach_2(self, val):
 
+        # Searching the left tree
+        if val < self.data:
+            if self.left:
+                self.left = self.left.delete_approach_2(val)
+
+        # Searching the right tree
+        elif val > self.data:
+            if self.right:
+                self.right = self.right.delete_approach_2(val)
+
+        else:
+            if self.left is None and self.right is None:
+                return None
+            elif self.left is None:
+                return self.right
+            elif self.right is None:
+                return self.left
+
+            max_val = self.left.find_max()
+            self.data = max_val
+            self.left = self.left.delete_approach_2(max_val)
+
+        return self
 
 
 
@@ -186,5 +210,10 @@ if __name__ == '__main__':
     # print(tree.in_order_traversal())
 
     numbers_tree = build_tree([17, 4, 1, 20, 9, 23, 18, 34])
-    numbers_tree.delete(4)
-    print("After deleting 17 ", numbers_tree.in_order_traversal())
+    numbers_tree.delete(1)
+    print("After deleting  4 ", numbers_tree.in_order_traversal())
+
+    numbers_tree_2 = build_tree([17, 4, 1, 20, 9, 23, 18, 34])
+    numbers_tree_2.delete_approach_2(20)
+    print("After deleting 1", numbers_tree_2.in_order_traversal())
+
